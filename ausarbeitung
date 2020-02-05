@@ -10,23 +10,27 @@ public class Ausarbeitung{
         return liste;
     }
 
-    public static int[] Tauschen(int []Zahlenreihe,int a, int b){
+    public static int[] strg_c_strg_v (int []liste){
+        int []liste2 =liste;
+        return liste2;  
+    }
+
+    public static void Tauschen(int []Zahlenreihe,int a, int b){
         int[] neueliste =  Zahlenreihe;
         int temp = Zahlenreihe[a];
         neueliste[a]=Zahlenreihe[b];
         neueliste[b] = temp;
-        return neueliste;
+
     }
 
-    public static int[] SORTIEREN(int[] liste) {
+    public static void SORTIEREN(int[] liste) {
         for(int i=1; i<liste.length; i++) {
             for(int n=0; n<liste.length-i; n++) {
                 if(liste[n]>liste[n+1]) {
-                    liste=Tauschen(liste,n,n+1);
+                    Tauschen(liste,n,n+1);
                 }		
             }
         }
-        return liste;
     }
 
     public static void Ausgabe(int[] liste) {
@@ -38,15 +42,16 @@ public class Ausarbeitung{
     }
 
     public static void main(String[]args){
- System.out.println("Listenlänge: / Zeit:");
+        System.out.println("Listenlänge: / Zeit:");
         for(int n=0;n<50001;n=n+1000){
-        int[] liste = ZufallsListe(n);
-        long start =System.currentTimeMillis();
-        int[]Sliste= SORTIEREN(liste); 
-        long ende =System.currentTimeMillis();
-        System.out.println(n+":"+(ende-start));
-        //Ausgabe(liste);
-        //Ausgabe(Sliste);
+            int[] liste = ZufallsListe(n);
+            int liste2[] = strg_c_strg_v(liste);
+            long start =System.currentTimeMillis();
+            SORTIEREN(liste); 
+            long ende =System.currentTimeMillis();
+            System.out.println(n+":"+(ende-start));
+            //Ausgabe(liste);
+            //Ausgabe(Sliste);
+        }
     }
-}
 }
