@@ -1,0 +1,52 @@
+public class Ausarbeitung{
+    public static int[] ZufallsListe(int n){
+        int[] liste = new int[n];
+        int x;
+        boolean vorhanden;
+        for(int i=0; i<n;i++){
+            x = (int) Math.floor(n*Math.random()+1); 
+            liste[i] = x;
+        }
+        return liste;
+    }
+
+    public static int[] Tauschen(int []Zahlenreihe,int a, int b){
+        int[] neueliste =  Zahlenreihe;
+        int temp = Zahlenreihe[a];
+        neueliste[a]=Zahlenreihe[b];
+        neueliste[b] = temp;
+        return neueliste;
+    }
+
+    public static int[] SORTIEREN(int[] liste) {
+        for(int i=1; i<liste.length; i++) {
+            for(int n=0; n<liste.length-i; n++) {
+                if(liste[n]>liste[n+1]) {
+                    liste=Tauschen(liste,n,n+1);
+                }		
+            }
+        }
+        return liste;
+    }
+
+    public static void Ausgabe(int[] liste) {
+        System.out.print("{");
+        for (int i =0; i<liste.length-1;i++) {
+            System.out.print(liste[i]+", ");
+        }
+        System.out.println(liste[liste.length-1]+"}");
+    }
+
+    public static void main(String[]args){
+ System.out.println("Listenlänge: / Zeit:");
+        for(int n=0;n<50001;n=n+1000){
+        int[] liste = ZufallsListe(n);
+        long start =System.currentTimeMillis();
+        int[]Sliste= SORTIEREN(liste); 
+        long ende =System.currentTimeMillis();
+        System.out.println(n+":"+(ende-start));
+        //Ausgabe(liste);
+        //Ausgabe(Sliste);
+    }
+}
+}
