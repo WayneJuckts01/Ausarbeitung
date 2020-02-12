@@ -10,8 +10,11 @@ public class Ausarbeitung{
         return liste;
     }
 
-    public static int[] strg_c_strg_v (int []liste){
-        int []liste2 =liste;
+    public static int[] kopieren(int []liste){
+        int []liste2 = new int [liste.length];
+        for( int n=0;n<liste.length;n++){
+            liste2 [n]= liste[n];
+        }
         return liste2;  
     }
 
@@ -20,7 +23,6 @@ public class Ausarbeitung{
         int temp = Zahlenreihe[a];
         neueliste[a]=Zahlenreihe[b];
         neueliste[b] = temp;
-
     }
 
     public static void SORTIEREN(int[] liste) {
@@ -41,15 +43,38 @@ public class Ausarbeitung{
         System.out.println(liste[liste.length-1]+"}");
     }
 
+    public static int[] sort(int []liste){
+        int[] neueliste = new int[liste.length];
+        int temp= 0;
+        int index=0;
+        for(int j=liste.length-1;j>=0;j--){
+            for(int i=0; i<liste.length;i++){
+                if(liste[i]>temp){
+                    temp = liste[i];
+                    index= i;
+                    neueliste[j] = temp;
+                }
+            }
+            liste[index] =0;
+            temp = 0;
+            index = 0;
+        }
+        return neueliste;
+    }
+
     public static void main(String[]args){
         System.out.println("Listenlänge: / Zeit:");
         for(int n=0;n<50001;n=n+1000){
             int[] liste = ZufallsListe(n);
-            int liste2[] = strg_c_strg_v(liste);
+            int[] liste2 = kopieren(liste);
             long start =System.currentTimeMillis();
             SORTIEREN(liste); 
             long ende =System.currentTimeMillis();
+           // long start2 =System.currentTimeMillis();
+            //sort(liste2);
+            //long ende2 =System.currentTimeMillis();
             System.out.println(n+":"+(ende-start));
+            //System.out.println(n+":"+(ende2-start2));
             //Ausgabe(liste);
             //Ausgabe(Sliste);
         }
