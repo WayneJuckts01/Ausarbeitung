@@ -1,0 +1,43 @@
+public class Algo{
+    public static int[] ZufallsListe(int n){
+        int[] liste = new int[n];
+        int x;
+        boolean vorhanden;
+        for(int i=0; i<n;i++){
+            x = (int) Math.floor(n*Math.random()+1); 
+            liste[i] = x;
+        }
+        return liste;
+    }
+
+    public static int[] liste2(int []liste){
+        int[] neueliste = new int[liste.length];
+        int temp= 0;
+        int index=0;
+        for(int j=liste.length-1;j>=0;j--){
+            for(int i=0; i<liste.length;i++){
+                if(liste[i]>temp){
+                    temp = liste[i];
+                    index= i;
+                    neueliste[j] = temp;
+                }
+            }
+            liste[index] =0;
+            temp = 0;
+            index = 0;
+        }
+        return neueliste;
+    }
+
+    public static void main(String[]args){
+        System.out.println("Listenlänge: / Zeit:");
+        for(int n=0;n<50001;n=n+1000){
+            int[] liste = ZufallsListe(n);
+            long start =System.currentTimeMillis();
+            liste2(liste);
+            long ende =System.currentTimeMillis();
+            System.out.println(n+":"+(ende-start));
+
+        }
+    }
+}
