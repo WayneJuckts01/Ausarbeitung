@@ -1,4 +1,4 @@
-public class Algo{
+public class Bigsort{
     public static int[] ZufallsListe(int n){
         int[] liste = new int[n];
         int x;
