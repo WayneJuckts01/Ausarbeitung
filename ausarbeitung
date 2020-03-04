@@ -62,18 +62,45 @@ public class Ausarbeitung{
         return neueliste;
     }
 
+    public static int[] quicksort(int []liste,int start, int ende){
+        if(start>=ende){return liste;}   
+        if(liste.length==0){return liste;}
+        int pivot = liste[start];
+        int i = start;
+        int j = ende;
+        while(i<=j){
+            while(liste[i]<pivot){
+                i++;
+            }while(liste[j]>pivot){ 
+                j--;
+            }
+            if(i<=j){
+                Tauschen(liste,i,j);
+                i++;
+                j--;
+            }
+        }
+        if(start<j){quicksort(liste,start,j);}
+        if(ende>i){quicksort(liste,i,ende);}
+        return liste;
+    }
+
     public static void main(String[]args){
         System.out.println("Listenlänge: / Zeit:");
-        for(int n=0;n<50001;n=n+1000){
+        for(int n=0;n<500001;n=n+1000){
             int[] liste = ZufallsListe(n);
             int[] liste2 = kopieren(liste);
+            int[] liste3 = kopieren(liste);
             long start =System.currentTimeMillis();
             SORTIEREN(liste); 
             long ende =System.currentTimeMillis();
-           // long start2 =System.currentTimeMillis();
-            //sort(liste2);
-            //long ende2 =System.currentTimeMillis();
-            System.out.println(n+":"+(ende-start));
+            long start2 =System.currentTimeMillis();
+            sort(liste2);
+            long ende2 =System.currentTimeMillis();
+            long start3 =System.currentTimeMillis();
+            quicksort(liste3,0,liste3.length-1);
+            long ende3 =System.currentTimeMillis();
+            System.out.println(n+":"+(ende-start)+":"+(ende2-start2)+":"+(ende3-start3));
             //System.out.println(n+":"+(ende2-start2));
             //Ausgabe(liste);
             //Ausgabe(Sliste);
