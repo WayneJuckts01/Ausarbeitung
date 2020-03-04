@@ -101,9 +101,7 @@ public class Ausarbeitung{
             quicksort(liste3,0,liste3.length-1);
             long ende3 =System.currentTimeMillis();
             System.out.println(n+":"+(ende-start)+":"+(ende2-start2)+":"+(ende3-start3));
-            //System.out.println(n+":"+(ende2-start2));
-            //Ausgabe(liste);
-            //Ausgabe(Sliste);
+           
         }
     }
 }
